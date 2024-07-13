@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Анкета</title>
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <header>
+                <img src="logo.png" alt="Logo" class="centered-image">
+            </header>
+            <h2 class="centered-title">Для початку спілкування заповніть анкету</h2>
+            <section class="form-section">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ім'я</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname">Контакт для звʼязку</label>
+                        <input type="text" id="nickname" name="nickname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Місто</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Вік</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Стать</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Чоловіча</option>
+                            <option value="female">Жіноча</option>
+                            <option value="other">Інша</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="search-gender">Шукаю людину за статтю</label>
+                        <select id="search-gender" name="search-gender" required>
+                            <option value="male">Чоловіча</option>
+                            <option value="female">Жіноча</option>
+                            <option value="both">Обидві</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-pic">Завантажити фото профіля</label>
+                        <input type="file" id="profile-pic" name="profile-pic" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Додаткова інформація</label>
+                        <textarea id="bio" name="bio" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Продовжити</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
+<style>html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffff, #26f7f7);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.centered-image {
+    width: 200px;
+    margin: 0 auto 20px auto; 
+}
+
+.centered-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #26f7f7;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #1bc2c2;
+}
+
+
+
+@media (max-width: 767px) {
+    .form-container {
+        width: 90%;
+    }
+
+    .centered-image {
+        width: 160px; 
+    }
+
+    .centered-title {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+</style>

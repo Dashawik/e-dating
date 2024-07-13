@@ -8,13 +8,17 @@
 <body>
     <header>
         <div class="logo">
-        <img src="img/logo.png" alt="logo"
+            <img src="image/logo.png" alt="logo">
+        </div>
+        <div class="header-buttons">
+            <button class="help">Інструкція</button>
         </div>
     </header>
     <main>
         <h1>Відкрийте для себе світ знайомств без кордонів!</h1>
         <p>Будьте собою! Не соромтеся показати свою справжню сутність. Наш сервіс допоможе вам знайти людей, які цінують вас таким, яким ви є.</p>
-        <p>Шукайте знайомства за допомогою спільних хобі, захоплень та улюблених справ. Так ви знайдете людей, з якими буде про що поговорити та з ким можна приємно провести час.</p>
+        <p>Шукайте знайомства за допомогою спільних хобі, захоплень та улюблених справ. Так ви знайдете людей, з якими буде про що поговорити.</p>
+        <p class="p2">Не втрачай можливості познайомитися з новими людьми. Реєструйся прямо зараз!</p>
         <div class="buttons">
             <button class="login">Увійти</button>
             <button class="register">Зареєструватися</button>
@@ -141,6 +145,29 @@ button {
     height: auto;
     margin: 10px;
     box-sizing: border-box;
+}
+
+.help {
+    font-size: 23px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #ffd54f; 
+    color: #000;
+    transition: background-color 0.3s ease;
+}
+
+.help:hover {
+    background-color: #ffc107; 
+}
+
+.p2{
+    color: #bd3066;
+    text-align: center;
+    font-size: 38px;
+    font-weight: bold;
 }
 
 </style>

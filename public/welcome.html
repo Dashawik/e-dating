@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Знайомства</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+        <img src="img/logo.png" alt="logo"
+        </div>
+    </header>
+    <main>
+        <h1>Відкрийте для себе світ знайомств без кордонів!</h1>
+        <p>Будьте собою! Не соромтеся показати свою справжню сутність. Наш сервіс допоможе вам знайти людей, які цінують вас таким, яким ви є.</p>
+        <p>Шукайте знайомства за допомогою спільних хобі, захоплень та улюблених справ. Так ви знайдете людей, з якими буде про що поговорити та з ким можна приємно провести час.</p>
+        <div class="buttons">
+            <button class="login">Увійти</button>
+            <button class="register">Зареєструватися</button>
+        </div>
+        <div class="images"  width: 300;>
+            <img src="img/image1.png" alt="Image 1">
+            <img src="img/image2.png" alt="Image 2">
+            <img src="img/image3.png" alt="Image 3">
+        </div>
+    </main>
+</body>
+</html>
+
+<script>
+
+    console.log('Hello, World!');
+    const loginButton = document.querySelector('.login');
+    const registerButton = document.querySelector('.register');
+
+    loginButton.addEventListener('click', () => {
+        window.location.href = 'login.html';
+    });
+
+    registerButton.addEventListener('click', () => {
+        window.location.href = 'register.html';
+    });
+</script>
+
+<style>
+    body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.currency {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.search-icon {
+    font-size: 24px;
+}
+
+main {
+    text-align: center;
+    padding: 50px 20px;
+
+}
+
+h1 {
+    color: #bd3066;
+    font-size: 45px;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+p {
+    font-size: 25px;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+button {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login {
+    background-color: #80deea;
+    color: #000000;
+}
+
+.login:hover {
+    background-color: #4dd0e1;
+}
+
+.register {
+    background-color: #000;
+    color: #fff;
+}
+
+.register:hover {
+    background-color: #333;
+}
+
+.logo img {
+    height: 66px;
+}
+
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;}
+
+.images img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+</style>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+  </head>
+  <body>
+    <main>
+      <div class="login-container">
+        <header>
+          <img src="img/logo.png" alt="Logo" class="top-left-image" />
+        </header>
+        <section>
+          <h2>Вхід в акаунт</h2>
+          <form>
+            <div class="form-group">
+              <label for="username">Ім'я користувача</label>
+              <input type="text" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Пароль</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Увійти</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+/>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/toastify-js"
+></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script type="module">
+  import { setCookie } from "./js/cookies.js";
+
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const login = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
+
+    axios
+      .post("/api/auth/login", {
+        login,
+        password,
+      })
+      .then((response) => {
+        setCookie("token", response.data.token, 1);
+        setCookie("login", login, 1);
+        window.location.href = "/home.html";
+      })
+      .catch((error) => {
+        Toastify({
+          text: error.response.data.message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+        }).showToast();
+      });
+  });
+</script>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffff, #26f7f7);
+  }
+
+  .login-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .top-left-image {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #26f7f7;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #1bc2c2;
+  }
+
+  /* Responsive Design */
+
+  @media (max-width: 767px) {
+    .login-container {
+      width: 90%;
+      padding: 10px;
+    }
+
+    .top-left-image {
+      width: 80px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    button {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+    }
+  }
+</style>

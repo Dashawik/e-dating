@@ -10,10 +10,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/autoload": "^5.10.0",
+    "@fastify/static": "^7.0.4",
+    "@prisma/client": "^5.16.2",
+    "ajv-errors": "^3.0.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
-    "fastify": "^4.28.1"
+    "fastify": "^4.28.1",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "prisma": "^5.16.2"
+  },
+  "_moduleAliases": {
+    "@utils": "utils",
+    "@models": "models"
   }
 }

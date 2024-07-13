@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello, World!</title>
-  </head>
   <body>
-    <h1>Hello, World!</h1>
+    <h1 id="login"></h1>
   </body>
 </html>
+
+<script type="module">
+  import { getCookie } from "./js/cookies.js";
+
+  const login = getCookie("login");
+  document.getElementById("login").innerText = `Вітаємо, ${login}!`;
+</script>

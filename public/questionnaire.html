@@ -143,13 +143,23 @@
 </script>
 
 <style>
-  main {
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+main {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #ffffff, #26f7f7);
-  }
+    background: 
+        linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+        linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+      background-size: cover;
+      background-attachment: fixed;}
 
   .form-container {
     display: flex;
@@ -201,7 +211,9 @@
 
   button {
     padding: 10px 20px;
-    background-color: #26f7f7;
+    background: 
+                linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+                linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
     color: #ffffff;
     font-size: 18px;
     border: none;
@@ -211,7 +223,7 @@
   }
 
   button:hover {
-    background-color: #1bc2c2;
+    background-color:#ccc;
   }
 
   @media (max-width: 767px) {

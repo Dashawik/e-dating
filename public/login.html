@@ -9,7 +9,7 @@
     <main>
       <div class="login-container">
         <header>
-          <img src="img/logo.png" alt="Logo" class="top-left-image" />
+          <img src="img/logo.png" alt="Logo" class="image" />
         </header>
         <section>
           <h2>Вхід в акаунт</h2>
@@ -89,81 +89,85 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #ffffff, #26f7f7);
+    background: 
+            linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+            linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
   }
 
   .login-container {
     background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    width: 400px;
   }
 
-  .top-left-image {
-    width: 200px;
+  .image {
+    width: 250px;
     margin-bottom: 20px;
   }
 
   h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 30px;
   }
 
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom:20px;
     text-align: left;
   }
 
   .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
+    margin-bottom: 10px;
+    font-size: 18px;
   }
 
   .form-group input {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
   }
 
   button {
-    padding: 10px 20px;
-    background-color: #26f7f7;
+    padding: 15px 30px;
+    background: 
+            linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+            linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
     color: #ffffff;
-    font-size: 18px;
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: #1bc2c2;
+    background: #6f6f6f;
   }
 
-  /* Responsive Design */
 
   @media (max-width: 767px) {
     .login-container {
       width: 90%;
-      padding: 10px;
+      padding: 20px;
     }
 
     .top-left-image {
-      width: 80px;
+      width: 100px;
     }
 
     h2 {
-      font-size: 20px;
+      font-size: 24px;
     }
 
     button {
       width: 100%;
-      font-size: 16px;
-      padding: 10px;
+      font-size: 18px;
+      padding: 15px;
     }
   }
 </style>

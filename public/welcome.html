@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Знайомства</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="image/logo.png" alt="logo">
+            <img src="img/logo.png" alt="logo">
         </div>
         <div class="header-buttons">
-            <button class="help">Інструкція</button>
-        </div>
-    </header>
-    <main>
-        <h1>Відкрийте для себе світ знайомств без кордонів!</h1>
-        <p>Будьте собою! Не соромтеся показати свою справжню сутність. Наш сервіс допоможе вам знайти людей, які цінують вас таким, яким ви є.</p>
-        <p>Шукайте знайомства за допомогою спільних хобі, захоплень та улюблених справ. Так ви знайдете людей, з якими буде про що поговорити.</p>
-        <p class="p2">Не втрачай можливості познайомитися з новими людьми. Реєструйся прямо зараз!</p>
-        <div class="buttons">
             <button class="login">Увійти</button>
             <button class="register">Зареєструватися</button>
+            <button class="help">?</button>
         </div>
-        <div class="images"  width: 300;>
-            <img src="img/image1.png" alt="Image 1">
-            <img src="img/image2.png" alt="Image 2">
-            <img src="img/image3.png" alt="Image 3">
+    </header>
+    
+    <main>
+        <div class="content">
+        <div class="text">
+            <h1 class="text1">Відкрийте для себе світ знайомств без кордонів!</h1>
+            <p class="text2">Будьте собою! Не соромтеся показати свою справжню сутність. Наш сервіс допоможе вам знайти людей, які цінують вас таким, яким ви є.</p>
+            <p class="text3">Шукайте знайомства за допомогою спільних хобі, захоплень та улюблених справ. Так ви знайдете людей, з якими буде про що поговорити.</p>
+            <p class="text4">Не втрачай можливості познайомитися з новими людьми.<b> Реєструйся прямо зараз!</b></p>
         </div>
-    </main>
+        <div class="images">
+            <img src="img/imagewelcome.png" alt="Image 1">
+        </div>
+    </div>
+    </main>    
 </body>
 </html>
 
 <script>
-
     console.log('Hello, World!');
     const loginButton = document.querySelector('.login');
     const registerButton = document.querySelector('.register');
@@ -49,125 +50,149 @@
 
 <style>
     body {
-    font-family: 'Helvetica Neue', Arial, sans-serif; 
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    
+        font-family: 'Helvetica Neue', Arial, sans-serif; 
+        margin: 0;
+        padding: 0;
+        background: 
+            linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+            linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .header-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        font-size: 24px;
+        padding: 15px 30px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .login {
+        background: linear-gradient(rgba(150, 80, 255, 0.4), rgba(150, 80, 255, 0.0) 80%),
+                    linear-gradient(-45deg, rgba(100, 180, 255, 0.9) 25%, rgba(255, 180, 95, 0.9) 75%);
+        color: #000; 
+    }
+
+    .login:hover {
+        background: linear-gradient(rgba(255, 180, 95, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+    }
+
+    .register {
+        background: #000;
+        color: #fff;
+    }
+
+    .register:hover {
+        background: linear-gradient(rgba(150, 80, 255, 0.4), rgba(150, 80, 255, 0.0) 80%),
+                    linear-gradient(-45deg, rgba(100, 180, 255, 0.9) 25%, rgba(255, 180, 95, 0.9) 75%);
+    }
+
+    .help {
+        font-family: 'Roboto', sans-serif;
+        font-size: 23px;
+        padding: 10px 20px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        background: linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+                    linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+        color: #000;
+    }
+
+    .help:hover {
+        background: linear-gradient(rgba(255, 180, 95, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .text {
+        flex: 1;
+        text-align: left;
+        margin-right: 20px;
+        padding: 20px; 
+        box-sizing: border-box; 
+        margin: 0 20px;
+    }
+
+        .images {
+            flex: 0 0 auto;
+            max-width: 800px;
+        }
+
+        .images img {
+            width: 100%;
+            height: auto;
+        }
+
+        .logo img {
+            height: 66px;
+        }
+
+        h1 {
+    font-size: 36px; 
+    }
+
+    .text p {
+    font-size: 36px; 
+    }
+
+    .text1 {
+    font-size: 50px;
+    color: rgb(0, 0, 0); 
+    } 
+
+        @media (max-width: 1200px) {
+    body {
+        flex-direction: column; 
+    }
+
+    header {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .header-buttons {
+        flex-direction: column; 
+    }
+
+    button {
+        font-size: 20px; 
+        padding: 10px 20px; 
+        margin: 5px 0; 
+    }
+
+    .content {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .text {
+        size: 10px;
+        margin-right: 0;
+        text-align: center; 
+        padding: 10px;
+    }
 }
-
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: white;
-    border-bottom: 1px solid #ddd;
-}
-
-
-.currency {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.search-icon {
-    font-size: 24px;
-}
-
-main {
-    text-align: center;
-    padding: 50px 20px;
-
-}
-
-h1 {
-    color: #bd3066;
-    font-size: 45px;
-    margin-bottom: 30px;
-    margin-top: 0;
-}
-
-p {
-    font-size: 25px;
-    line-height: 1.6;
-    margin: 10px 0;
-}
-
-.buttons {
-    margin: 20px 0;
-}
-
-button {
-    font-size: 20px;
-    padding: 15px 30px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login {
-    background-color: #80deea;
-    color: #000000;
-}
-
-.login:hover {
-    background-color: #4dd0e1;
-}
-
-.register {
-    background-color: #000;
-    color: #fff;
-}
-
-.register:hover {
-    background-color: #333;
-}
-
-.logo img {
-    height: 66px;
-}
-
-
-.images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;}
-
-.images img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin: 10px;
-    box-sizing: border-box;
-}
-
-.help {
-    font-size: 23px;
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    background-color: #ffd54f; 
-    color: #000;
-    transition: background-color 0.3s ease;
-}
-
-.help:hover {
-    background-color: #ffc107; 
-}
-
-.p2{
-    color: #bd3066;
-    text-align: center;
-    font-size: 38px;
-    font-weight: bold;
-}
-
 </style>

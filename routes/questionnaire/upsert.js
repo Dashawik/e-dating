@@ -1,6 +1,6 @@
 module.exports = (fastify, opts, next) => {
   fastify.post(
-    "/questionnaire/upsert",
+    "/upsert",
     {
       preValidation: fastify.auth(),
       schema: {

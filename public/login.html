@@ -59,8 +59,8 @@
         password,
       })
       .then((response) => {
-        setCookie("token", response.data.token, 1);
-        setCookie("login", login, 1);
+        setCookie("token", response.data.accessToken, 1);
+        setCookie("login", response.data.login, 1);
         window.location.href = "/home.html";
       })
       .catch((error) => {

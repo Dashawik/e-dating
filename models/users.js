@@ -12,6 +12,14 @@ module.exports = {
     });
   },
 
+  async delete(id) {
+    return await prisma.users.delete({
+      where: {
+        id,
+      },
+    });
+  },
+
   async findByLogin(login) {
     return await prisma.users.findUnique({
       where: {
@@ -21,6 +29,29 @@ module.exports = {
         id: true,
         login: true,
         password: true,
+      },
+    });
+  },
+
+  async getPassword(id) {
+    return await prisma.users.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        id: true,
+        password: true,
+      },
+    });
+  },
+
+  async editPassword(id, password) {
+    return await prisma.users.update({
+      where: {
+        id,
+      },
+      data: {
+        password,
       },
     });
   },

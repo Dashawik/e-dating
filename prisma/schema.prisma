@@ -8,11 +8,12 @@ datasource db {
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  login     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  Token     Tokens?
+  id             Int             @id @default(autoincrement())
+  login          String          @unique
+  password       String
+  createdAt      DateTime        @default(now())
+  Token          Tokens?
+  Questionnaires Questionnaires?
 }
 
 model Tokens {
@@ -20,5 +21,19 @@ model Tokens {
   token     String   @unique
   userId    Int      @unique
   createdAt DateTime @default(now())
-  User      Users    @relation(fields: [userId], references: [id])
+  User      Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Questionnaires {
+  id           Int    @id @default(autoincrement())
+  userId       Int    @unique
+  name         String
+  link         String
+  city         String
+  age          Int
+  gender       String
+  searchGender String
+  bio          String
+  profilePic   String @db.LongText
+  User         Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

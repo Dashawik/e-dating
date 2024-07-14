@@ -28,6 +28,7 @@
   },
   "_moduleAliases": {
     "@utils": "utils",
-    "@models": "models"
+    "@models": "models",
+    "@plugins": "plugins"
   }
 }

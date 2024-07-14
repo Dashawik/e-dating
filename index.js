@@ -14,6 +14,8 @@ const fastify = require("fastify")({
   },
 });
 
+require("@plugins/auth")(fastify);
+
 fastify.register(require("@fastify/static"), {
   root: path.join(__dirname, "public"),
 });

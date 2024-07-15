@@ -42,7 +42,6 @@
               <select id="search_gender" name="search_gender" required>
                 <option value="male">Чоловіча</option>
                 <option value="female">Жіноча</option>
-                <option value="both">Обидві</option>
               </select>
             </div>
             <div class="form-group">
@@ -52,7 +51,6 @@
                 id="profile_pic"
                 name="profile_pic"
                 accept="image/*"
-                required
               />
               <img
                 id="profile_pic_preview"
@@ -91,8 +89,8 @@
 </script>
 
 <script type="module">
+  let pic = "";
   window.onload = () => {
-    console.log("loaded");
     axios
       .get("/api/questionnaire/", {
         headers: {
@@ -110,6 +108,7 @@
         document.getElementById("bio").value = data.bio;
         document.getElementById("profile_pic_preview").src = data.profilePic;
         document.getElementById("profile_pic_preview").style.display = "block";
+        pic = data.profilePic;
       });
   };
 
@@ -137,7 +136,12 @@
       data[key] = value;
     }
 
-    const base64 = await convertBase64(data.profile_pic);
+    let base64 = "";
+    if (data.profile_pic.size > 0) {
+      base64 = await convertBase64(data.profile_pic);
+    } else {
+      base64 = pic;
+    }
 
     const reqData = {
       name: data.name,
@@ -162,7 +166,7 @@
           backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
         }).showToast();
         setTimeout(() => {
-          window.location.href = "home.html";
+          //window.location.href = "home.html";
         }, 1500);
       })
       .catch((error) => {

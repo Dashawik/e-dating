@@ -151,7 +151,7 @@
     };
 
     axios
-      .post("http://localhost:3000/api/questionnaire/upsert", reqData, {
+      .post("/api/questionnaire/upsert", reqData, {
         headers: {
           Authorization: `${getCookie("token")}`,
         },

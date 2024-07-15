@@ -37,6 +37,7 @@ async function handler(request, reply) {
 
   const user = require("@models/users");
   const token = require("@models/tokens");
+  const questionnaire = require("@models/questionnaire");
 
   const { login, password } = request.body;
 
@@ -57,7 +58,7 @@ async function handler(request, reply) {
   const accessToken = await tokenGenarator(foundUser.id);
   await token.upsert(foundUser.id, accessToken);
 
-  return reply.status(200).send({
+  let data = {
     id: foundUser.id,
     login: foundUser.login,
     firstLogin: foundUser.firstLogin,
@@ -65,5 +66,12 @@ async function handler(request, reply) {
     firstName: foundUser.firstName,
     lastName: foundUser.lastName,
     accessToken: `Bearer ${accessToken}`,
-  });
+  };
+
+  const userQuestionnaire = await questionnaire.findById(foundUser.id);
+
+  if (!userQuestionnaire) data.redirect = "/questionnaire.html";
+  else data.redirect = "/home.html";
+
+  return reply.status(200).send(data);
 }

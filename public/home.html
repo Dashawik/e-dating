@@ -466,6 +466,60 @@
       .notification-link:hover {
         text-decoration: underline;
       }
+
+      @media (max-width: 768px) {
+        .profile-card {
+          width: 100%;
+          max-width: none;
+          margin: 10px;
+        }
+
+        .profile-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .like-button,
+        .dislike-button {
+          width: 100%;
+          max-width: 100px;
+          height: 40px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .header-buttons {
+          margin-top: 10px;
+        }
+
+        .profile-name {
+          font-size: 20px;
+        }
+
+        .profile-age,
+        .profile-location,
+        .profile-bio {
+          font-size: 14px;
+        }
+        .profile-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .like-button,
+        .dislike-button {
+          width: 100%;
+          max-width: 80px;
+          height: 40px;
+        }
+        .modal-content {
+          width: 90%;
+        }
+      }
     </style>
   </body>
 </html>

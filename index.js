@@ -5,6 +5,7 @@ const path = require("node:path");
 const logger = require("./logger");
 const fastify = require("fastify")({
   logger,
+  bodyLimit: 1048576 * 5,
   ajv: {
     customOptions: {
       jsonPointers: true,

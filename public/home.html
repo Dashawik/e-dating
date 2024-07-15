@@ -122,6 +122,15 @@
             backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
           }).showToast();
 
+          document.querySelector(".profile-name").textContent =
+            "Нажаль доступних анкет немає 😢 Повертайтесь пізніше!🤍";
+          document.querySelector(".profile-age").textContent = "";
+          document.querySelector(".profile-location").textContent = "";
+          document.querySelector(".profile-bio").textContent = "";
+          document.querySelector(".profile-image img").src =
+            "./img/imagewelcome.png";
+          document.querySelector(".profile-actions").style.display = "none";
+
           console.error("Error:", error);
         }
       }

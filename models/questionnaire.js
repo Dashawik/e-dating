@@ -41,4 +41,23 @@ module.exports = {
       },
     });
   },
+
+  async findById(userId) {
+    return await prisma.questionnaires.findUnique({
+      where: {
+        userId,
+      },
+    });
+  },
+
+  async unviewedQuestionnaires(viewedCandidateIds, gender) {
+    return await prisma.questionnaires.findMany({
+      where: {
+        userId: {
+          notIn: viewedCandidateIds,
+        },
+        gender,
+      },
+    });
+  },
 };

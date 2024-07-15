@@ -86,9 +86,6 @@ module.exports = (fastify, opts, next) => {
 async function handler(request, reply) {
   const questionnaire = require("@models/questionnaire");
 
-  console.log(request.body);
-  console.log("User ID: ", request.user.id);
-
   try {
     await questionnaire.upsert(
       request.user.id,

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dating Profiles</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <img src="img/logo.png" alt="Logo" class="logo" />
+      <div class="header-buttons">
+        <button class="sidebar-button">
+          <span class="material-symbols-outlined">favorite</span>
+        </button>
+        <button
+          class="sidebar-button"
+          onclick='window.location.href = "/myProfile.html";'
+        >
+          <span class="material-symbols-outlined">person</span>
+        </button>
+      </div>
+    </header>
+    <div class="profile-container"></div>
+    <div class="profile-card" id="profile2">
+      <div class="profile-image">
+        <img src="img/imagewelcome.png" alt="Profile Picture" />
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name">Ім'я:</h1>
+        <p class="profile-age">Вік:</p>
+        <p class="profile-link"></p>
+        <p class="profile-location">Місто:</p>
+        <p class="profile-bio">Додаткова інфа:</p>
+        <div class="profile-actions" style="display: block">
+          <button class="dislike-button">❌</button>
+          <button class="like-button">❤️</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+/>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/toastify-js"
+></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script type="module">
+  import { valdidateToken } from "./js/auth.js";
+  valdidateToken();
+</script>
+
+<script type="module">
+  import { getCookie } from "./js/cookies.js";
+
+  let data = {};
+
+  const urlParams = new URLSearchParams(window.location.search);
+
+  loadData(urlParams.get("id"));
+  function loadData(id) {
+    axios
+      .post(
+        "/api/matches/get",
+        {
+          id,
+        },
+        {
+          headers: {
+            Authorization: getCookie("token"),
+          },
+        }
+      )
+      .then((response) => {
+        data = response.data;
+        document.querySelector(
+          ".profile-name"
+        ).textContent = `Ім'я: ${response.data.name}`;
+        document.querySelector(
+          ".profile-age"
+        ).textContent = `Вік: ${response.data.age}`;
+        document.querySelector(
+          ".profile-location"
+        ).textContent = `Місто: ${response.data.city}`;
+        document.querySelector(
+          ".profile-bio"
+        ).textContent = `Додаткова інфа: ${response.data.bio}`;
+        document.querySelector(".profile-image img").src =
+          response.data.profilePic;
+        if (response.data.link) {
+          document.querySelector(
+            ".profile-link"
+          ).textContent = `Лінк: ${response.data.link}`;
+          document.querySelector(".profile-actions").style.display = "none";
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  document.querySelector(".like-button").addEventListener("click", () => {
+    axios.post(
+      "/api/matches/confirm",
+      {
+        id: urlParams.get("id"),
+      },
+      {
+        headers: {
+          Authorization: getCookie("token"),
+        },
+      }
+    );
+    setTimeout(() => {
+      loadData(urlParams.get("id"));
+    }, 1000);
+
+    axios.post(
+      "/api/viewList/add",
+      {
+        candidateId: data.userId,
+      },
+      {
+        headers: {
+          Authorization: getCookie("token"),
+        },
+      }
+    );
+  });
+
+  document.querySelector(".dislike-button").addEventListener("click", () => {
+    axios.post(
+      "/api/viewList/add",
+      {
+        questionnairesId: data.id,
+      },
+      {
+        headers: {
+          Authorization: getCookie("token"),
+        },
+      }
+    );
+    window.location.href = "/home.html";
+  });
+</script>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        rgba(135, 60, 255, 0.4),
+        rgba(135, 60, 255, 0) 80%
+      ),
+      linear-gradient(
+        -45deg,
+        rgba(120, 155, 255, 0.9) 25%,
+        rgba(255, 160, 65, 0.9) 75%
+      );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    height: 66px;
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .sidebar-button {
+    background: none;
+    border: none;
+    color: #457b9d;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .sidebar-button span {
+    margin-right: 5px;
+  }
+
+  .sidebar-button:hover {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+  }
+
+  .profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .profile-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .profile-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .profile-info {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .profile-name {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+
+  .profile-age,
+  .profile-location,
+  .profile-bio,
+  .profile-link {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #555;
+    text-align: left;
+  }
+
+  .profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .like-button,
+  .dislike-button {
+    background: linear-gradient(
+        rgba(135, 60, 255, 0.4),
+        rgba(135, 60, 255, 0) 80%
+      ),
+      linear-gradient(
+        -45deg,
+        rgba(120, 155, 255, 0.9) 25%,
+        rgba(255, 160, 65, 0.9) 75%
+      );
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .like-button:hover,
+  .dislike-button:hover {
+    background: #e0e0e0;
+    color: white;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+</style>

@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
     <title>Анкета</title>
   </head>
   <body>
@@ -55,6 +54,12 @@
                 accept="image/*"
                 required
               />
+              <img
+                id="profile_pic_preview"
+                src="#"
+                alt="Profile Picture Preview"
+                style="display: none; margin-top: 10px; max-width: 100px"
+              />
             </div>
             <div class="form-group">
               <label for="bio">Додаткова інформація</label>
@@ -81,6 +86,33 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script type="module">
+  import { valdidateToken } from "./js/auth.js";
+  valdidateToken();
+</script>
+
+<script type="module">
+  window.onload = () => {
+    console.log("loaded");
+    axios
+      .get("/api/questionnaire/", {
+        headers: {
+          Authorization: `${getCookie("token")}`,
+        },
+      })
+      .then((response) => {
+        const data = response.data;
+        document.getElementById("name").value = data.name;
+        document.getElementById("nickname").value = data.link;
+        document.getElementById("city").value = data.city;
+        document.getElementById("age").value = data.age;
+        document.getElementById("gender").value = data.gender;
+        document.getElementById("search_gender").value = data.searchGender;
+        document.getElementById("bio").value = data.bio;
+        document.getElementById("profile_pic_preview").src = data.profilePic;
+        document.getElementById("profile_pic_preview").style.display = "block";
+      });
+  };
+
   import { getCookie } from "./js/cookies.js";
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -143,23 +175,29 @@
 </script>
 
 <style>
-
-body {
+  body {
     height: 100%;
     margin: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-}
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
 
-main {
+  main {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: 
-        linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
-        linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
-      background-size: cover;
-      background-attachment: fixed;}
+    background: linear-gradient(
+        rgba(135, 60, 255, 0.4),
+        rgba(135, 60, 255, 0) 80%
+      ),
+      linear-gradient(
+        -45deg,
+        rgba(120, 155, 255, 0.9) 25%,
+        rgba(255, 160, 65, 0.9) 75%
+      );
+    background-size: cover;
+    background-attachment: fixed;
+  }
 
   .form-container {
     display: flex;
@@ -211,9 +249,15 @@ main {
 
   button {
     padding: 10px 20px;
-    background: 
-                linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
-                linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+    background: linear-gradient(
+        rgba(135, 60, 255, 0.4),
+        rgba(135, 60, 255, 0) 80%
+      ),
+      linear-gradient(
+        -45deg,
+        rgba(120, 155, 255, 0.9) 25%,
+        rgba(255, 160, 65, 0.9) 75%
+      );
     color: #ffffff;
     font-size: 18px;
     border: none;
@@ -223,7 +267,13 @@ main {
   }
 
   button:hover {
-    background-color:#ccc;
+    background-color: #ccc;
+  }
+
+  #profile_pic_preview {
+    display: block;
+    margin: 10px auto;
+    max-width: 100px;
   }
 
   @media (max-width: 767px) {

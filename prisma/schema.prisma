@@ -14,6 +14,13 @@ model Users {
   createdAt      DateTime        @default(now())
   Token          Tokens?
   Questionnaires Questionnaires?
+  Notifications  Notifications[]
+
+  ViewListFinder    ViewList[] @relation("UserFinder")
+  ViewListCandidate ViewList[] @relation("UserCandidate")
+
+  MatchesFirstUser  Matches[] @relation("FirstUser")
+  MatchesSecondUser Matches[] @relation("SecondUser")
 }
 
 model Tokens {
@@ -36,4 +43,36 @@ model Questionnaires {
   bio          String
   profilePic   String @db.LongText
   User         Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ViewList {
+  id          Int @id @default(autoincrement())
+  finderId    Int
+  candidateId Int
+
+  UserFinder    Users @relation("UserFinder", fields: [finderId], references: [id], onDelete: Cascade)
+  UserCandidate Users @relation("UserCandidate", fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@unique([finderId, candidateId])
+}
+
+model Notifications {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  message   String
+  link      String
+  createdAt DateTime @default(now())
+  User      Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Matches {
+  id           Int     @id @default(autoincrement())
+  firstUserId  Int
+  secondUserId Int
+  confirmed    Boolean @default(false)
+
+  FirstUser  Users @relation("FirstUser", fields: [firstUserId], references: [id], onDelete: Cascade)
+  SecondUser Users @relation("SecondUser", fields: [secondUserId], references: [id], onDelete: Cascade)
+
+  @@unique([firstUserId, secondUserId])
 }

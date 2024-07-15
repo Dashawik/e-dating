@@ -30,11 +30,11 @@
         <img src="img/imagewelcome.png" alt="Profile Picture" />
       </div>
       <div class="profile-info">
-        <h1 class="profile-name">Ім'я:</h1>
-        <p class="profile-age">Вік:</p>
-        <p class="profile-location">Місто:</p>
-        <p class="profile-bio">Додаткова інфа:</p>
-        <div class="profile-actions">
+        <h1 class="profile-name"></h1>
+        <p class="profile-age"></p>
+        <p class="profile-location"></p>
+        <p class="profile-bio"></p>
+        <div class="profile-actions" style="display: none">
           <button class="dislike-button">❌</button>
           <button class="like-button">❤️</button>
         </div>
@@ -117,6 +117,11 @@
           data = response.data;
           updateProfileCard(data);
         } catch (error) {
+          Toastify({
+            text: "Нажаль, не знайшлось нових анкет. Повертайтесь пізніше!",
+            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+          }).showToast();
+
           console.error("Error:", error);
         }
       }
@@ -133,6 +138,7 @@
           ".profile-bio"
         ).textContent = `Додаткова інфа: ${data.bio}`;
         document.querySelector(".profile-image img").src = data.profilePic;
+        document.querySelector(".profile-actions").style.display = "flex";
       }
 
       async function handleAction(viewListUrl, matchesUrl) {

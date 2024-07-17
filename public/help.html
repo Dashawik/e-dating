@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часто поширені питання</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background: 
+                linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+                linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 66px;
+        }
+
+        .back-button {
+            padding: 10px;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button:hover {
+            background-color: #1b1b1b;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .instruction-section {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .instruction-content {
+            flex: 1;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .instruction-text {
+            flex: 1;
+        }
+
+        .instruction-image-container {
+            flex: 0 0 200px; /* Fixed width for images */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instruction-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .logo {
+                height: 50px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .instruction-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .instruction-content {
+                flex-direction: column;
+            }
+
+            .instruction-image-container {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <button class="back-button" onclick="window.history.back();">
+                <span class="material-icons" onclick="location.href='welcome.html'">arrow_back</span>
+            </button>
+            <img src="img/logo.png" alt="Logo" class="logo">
+        </div>
+    </header>
+    <main>
+        <h1>Часто поширені питання</h1>
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h4>Після реєстрації та авторизації користувача необхідно створити анкету, де вказати всю інформацію про себе. Це включає ваше ім'я, вік, місце проживання, інтереси, захоплення, фото та інші важливі деталі. Після заповнення анкети, на головній сторінці відображатимуться профілі користувачів, які можуть вас зацікавити.</h4>
+                </div>
+            
+            </div>
+        </section>
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h4>Якщо хтось лайкнув вашу анкету, ви отримаєте повідомлення про це (вкладка🤍). Вам буде відкритий доступ до перегляду профілю цієї людини, і ви зможете вирішити, чи хочете ви лайкнути або дизлайкнути її у відповідь.</h4>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h2>Як змінити пароль від облікового запису?</h2>
+                    <ol>
+                        <li>На головній сторінці натискаємо на іконку облікового запису.</li>
+                        <li>Вас перенаправить на сторінку де можна змінити пароль.</li>
+                        <li>Спочатку вводимо старий пароль.</li>
+                        <li>Потім вводимо новий пароль</li>
+                        <li>Для підтверження дії дублюємо новий паоль.</li>
+                        <li>Натискаємо кнопку змінити пароль</li>
+                    </ol>
+                </div>
+                <div class="instruction-image-container">
+                    <img src="img/instruction1.png" alt="Інструкція з входу" class="instruction-image">
+                    <img src="img/instruction2.png" alt="Інструкція з входу" class="instruction-image">
+                </div>
+            </div>
+        </section
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h2>Редагування анкети</h2>
+                    <ol>
+                        <li>На головній сторінці натискаємо на іконку облікового запису.</li>
+                        <li>Вас перенаправить на сторінку де можна змінити дані.</li>
+                        <li>Натискаємо кнопку змінити анкету.</li>
+                        <li>Вас перенаправить на сторінку де можна буде змінити дані.</li>
+                    </ol>
+                </div>
+                <div class="instruction-image-container">
+                    <img src="img/instruction1.png" alt="Інструкція з заповнення анкети" class="instruction-image">
+                    <img src="img/instruction3.png" alt="Інструкція з заповнення анкети" class="instruction-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h2>Вихід з облікового запису</h2>
+                    <ol>
+                        <li>На головній сторінці натискаємо на іконку облікового запису.</li>
+                        <li>Вас перенаправить на сторінку де можна змінити дані.</li>
+                        <li>Натискаємо кнопку вийти з акаунту.</li>
+                    </ol>
+                </div>
+                <div class="instruction-image-container">
+                    <img src="img/instruction1.png" alt="Інструкція з заповнення анкети" class="instruction-image">
+                    <img src="img/instruction4.png" alt="Інструкція з заповнення анкети" class="instruction-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h2>Видалити аккаунт</h2>
+                    <ul>
+                        <li>На головній сторінці натискаємо на іконку облікового запису.</li>
+                        <li>Вас перенаправить на сторінку де можна змінити дані.</li>
+                        <li>Натискаємо кнопку видалити акаунт.</li>
+                    </ul>
+                </div>
+                <div class="instruction-image-container">
+                    <img src="img/instruction1.png" alt="Інструкція з заповнення анкети" class="instruction-image">
+                    <img src="img/instruction5.png" alt="Інструкція з пошуку знайомств" class="instruction-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="instruction-section">
+            <div class="instruction-content">
+                <div class="instruction-text">
+                    <h2>Чи буде згодом розширений функціонал сервісу та внесення нових функцій?</h2>
+                    <h4>Так, з часом буде внесено багато нових функцій та змін до сервісу.</h4>
+                </div>
+                <div class="instruction-image-container">
+                    <img src="img/instruction6.png" alt="Інструкція з реєстрації" class="instruction-image">
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+<style>  
+    html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background: 
+        linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+        linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 66px;
+}
+
+.back-button {
+    padding: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button:hover {
+    background-color: #1b1b1b;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.instruction-section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.instruction-content {
+    flex: 1;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.instruction-text {
+    flex: 1;
+}
+
+.instruction-image-container {
+    flex: 0 0 200px; /* Fixed width for images */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instruction-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+    .logo {
+        height: 50px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .instruction-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .instruction-content {
+        flex-direction: column;
+    }
+
+    .instruction-image-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+</style>

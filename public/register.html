@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Page</title>
+  </head>
+  <body>
+    <main>
+      <div class="registration-container">
+        <header>
+          <img src="img/logo.png" alt="Logo" class="image" />
+        </header>
+        <section>
+          <h2>Реєстрація</h2>
+          <form>
+            <div class="form-group">
+              <label for="username">Ім'я користувача</label>
+              <input type="text" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Пароль</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Підтвердіть пароль</label>
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                required
+              />
+            </div>
+            <button type="submit">Зареєструватися</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+/>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/toastify-js"
+></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const login = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
+    const confirmPassword = document.querySelector("#confirm-password").value;
+
+    if (password !== confirmPassword) {
+      Toastify({
+        text: "Паролі не співпадають",
+        backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+      }).showToast();
+      return;
+    }
+
+    axios
+      .post("/api/register", {
+        login,
+        password,
+      })
+      .then((response) => {
+        Toastify({
+          text: "Користувач успішно зареєстрований",
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        }).showToast();
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1500);
+      })
+      .catch((error) => {
+        Toastify({
+          text: error.response.data.message,
+          backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+        }).showToast();
+      });
+  });
+</script>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: 
+            linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+            linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+  }
+
+  .registration-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .image {
+    width: 250px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    padding: 15px 30px;
+    background: 
+            linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
+            linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #6f6f6f;
+  }
+
+
+  @media (max-width: 767px) {
+    .registration-container {
+      width: 90%;
+      padding: 20px;
+    }
+
+    .top-left-image {
+      width: 100px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    button {
+      width: 100%;
+      font-size: 18px;
+      padding: 15px;
+    }
+  }
+</style>
